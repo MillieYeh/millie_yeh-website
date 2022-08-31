@@ -1,2 +1,2 @@
-# millie_yeh-website
+# website
 personal website
