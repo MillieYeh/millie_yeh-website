@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>website</title>
+</head>
+<body style="margin:0px"> 
+    <div style="background-color: #FAFAD2; border:1px solid #999999">
+        <h2 style="text-align: center;">WeHelp申請書</h2>
+    </div>
+
+    <div id = "list">
+        <div id = "introduce" style="padding: 60px; line-height: 30px;"></div>
+    </div>
+    <script>
+    //先顯示Loading訊息
+    let list=document.getElementById("list");
+    //list.innerHTML="...loading...";   
+    let introduce=document.getElementById("introduce");
+
+    let src = "https://millieyeh.github.io/website/data/introduction.json";
+    
+    fetch(src).then(function(response){
+        return response.json(); //將資料用JSON的格式詮釋
+    }).then(function(result){
+        //把抓到的資料放到畫面上
+        introduce.innerHTML = "";
+        let element;
+        for(let i=0; i<result.length; i++){
+            element = result[i];
+            introduce.innerHTML += element.question.bold() + "<br>" + element.answer + "<hr/>";
+        }
+    });
+
+    </script>    
+
+
+    <hr></hr>
+    <h3 style="text-align: center;">Contact Me</h3>
+
+    <ul style="padding:0px ;">
+        <li style="list-style-type: none; text-align: center;"><a href="https://www.linkedin.com/in/hsiaohan-yeh-996807208/">Linkedin</a></li>
+    </ul>
+    
+    </div>
+
+
+</body>
+</html>
+
