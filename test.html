@@ -5,40 +5,32 @@
     <title>website</title>
 </head>
 <body>
-    <div style="background-color: #FAFAD2; border:1px solid #999999; padding-left: 35rem">
+    <div style="background-color: #FAFAD2; border:1px solid #999999">
         <h2>WeHelp申請書</h2>
     </div>
-    <div style=" width:600px; height: 220px; line-height: 30px; padding-left: 24rem;">
-    <h3>兩百字內的個人簡介</h3>
-    <h4>我是葉曉函，過去的學期歷程都是教育相關科系，在因緣際會下獲得面試機會，因此我花了30天的時間自學 python，通過上機測驗後，目前在資訊產業擔任客戶工程師一職，迄今一年多的時間，雖然累積了基本的雲端技術，但是較少接觸開發的機會，經過自我探索後，我希望給自己一個機會，期望透過精實的訓練，讓自己完成專案實作，為未來的轉職跨出第一步。</h4>
-    </div>
+    
+    <div id = "list"></div>
+    <script>
+    //先顯示Loading訊息
+    let list=document.getElementById("list");
+    list.innerHTML="...loading...";   
+
+    let src = "https://millieyeh.github.io/website/data/introduction.json";
+    fetch(src).then(function(response){
+        return response.json(); //將資料用JSON的格式詮釋
+    }).then(function(result){
+        //把抓到的資料放到畫面上
+        list.innerHTML = "";
+        let element;
+        for(let i=0; i<result.length; i++){
+            element = result[i];
+            list.innerHTML += element.question.bold() + "<br>" + element.answer + "<hr/>";
+        }
+    });
+    </script>    
+
+
     <hr></hr>
-    <div style=" width:600px; height: 370px; line-height: 30px; padding-left: 24rem;">
-    <h3>為了成為軟體工程師，曾做過什麼努力？</h3>
-    <h4>成為軟體工程師的第一步，無非是要學會第一種程式語言，身為程式小白的我便選擇了從 python 入手。由於當初時間有限，我給自己擬定的計畫是先花2-3天的時間將台大 OCW 課程看完，接著開始練習各種指令的實例。在工作的過程中，我對於資料分析方面有點興趣，因此最近開始研究 SQL 語法，並嘗試使用 PyMySQL 串接 MariaDB 資料庫。然而這些學習都較零碎且粗淺，因此我想透過系統式的課程，督促自己完成專案。前陣子突發奇想，想做個購物網站上架通知，因此有先摸索爬蟲，目前只有嘗試抓取 ptt movie 版搜尋「捍衛戰士」後出現的某一頁的文章標題與作者，使用requests 套件發出 GET 網路請求，取得網頁 HTML 內容回傳值，接著透過 BeautifulSoup套件將 HTML 內容解析成 BeautifulSoup 物件，並使用 select 選擇器工具選到想要爬取的元素，最後寫入 csv 檔。</h4>
-    </div>
-    <hr></hr>
-    <div style=" width:600px; height: 140px; line-height: 30px; padding-left: 24rem;">
-    <h3>如果參與這個計畫，會怎麼安排學習時間？</h3>
-    <h4>雖然我目前仍有正職，但是我的工作性質是 wfh，因此在時間調配上相對彈性，目前的計畫是每天平日晚上與假日都是學習時間，並且已經做好 0 社交的心理準備。</h4>
-    </div>
-    <hr></hr>
-    <div style=" width:600px; height: 110px; line-height: 30px; padding-left: 24rem;">
-    <h3>是否有想要加入的軟體公司？為什麼想加入該公司？</h3>
-    <h4>目前沒有特別想加入的公司，因此也希望在學習過程中，與同學間交流獲得靈感。</h4>
-    </div>
-    <hr></hr>
-    <div style=" width:600px; height: 220px; line-height: 30px; padding-left: 24rem;">
-    <h3>請描述一件你曾經碰到最困難的事情，如何克服？</h3>
-    <h4>前陣子公司業務需要將 BigQuery 的資料做視覺化，我在使用 Datastudio 拉報表時發現 source data 的 schema 與我期待呈現的不符合。我遇到問題的克服方式大多是仰賴 google，因為現在網路上的資源實在太多又太豐富了，因此該問題後來以正規表達式的寫法解決了。其實在工作上有很多無法在第一時間想出解法的 issue，我認為冷靜釐清問題並且以關鍵字搜尋大多是我克服的方式之一。</h4>
-    </div>
-    <hr></hr>
-    <div style=" width:600px; height: 140px; line-height: 30px; padding-left: 24rem;">
-    <h3>關於這份申請網頁，請分享一個你開發時的技術心得。</h3>
-    <h4></h4>
-    </div>
-    <hr></hr>
-    <div style=" width:600px; height: 140px; line-height: 30px; padding-left: 24rem;">
     <h3>Contact Me</h3>
 
     <ul>
